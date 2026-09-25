@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-m1=t(@tg(m@k1e1h%x^ws1^4vy9pkc(g6f@+&o)@zh0nsn4#3=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ledeve.fr', 'www.ledeve.fr', 'ledeve.com', 'www.ledeve.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
