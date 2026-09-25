@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ledeve. — Solutions web, modèles métiers & automatisation</title>
+  <meta name="description" content="Création de sites internet clés en main, développement d'applications sur-mesure et scripts d'automatisation pour indépendants, artistes et PME.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased font-sans flex flex-col min-h-screen selection:bg-blue-600 selection:text-white">
+
+  <header class="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="{% url 'home' %}" class="flex items-center gap-2 group focus:outline-none">
+        <span class="w-2.5 h-6 bg-blue-600 rounded-sm transform -skew-x-12"></span>
+        <span class="text-xl font-black tracking-tight text-white group-hover:text-blue-400 transition">ledeve<span class="text-blue-500">.</span></span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-xs font-medium text-slate-300">
+        <a href="#modeles" class="hover:text-blue-400 transition">Modèles métiers</a>
+        <a href="#realisations" class="hover:text-blue-400 transition">Réalisations</a>
+        <a href="#automatisation" class="hover:text-blue-400 transition">Automatisation</a>
+        <a href="{% url 'a_propos' %}" class="hover:text-blue-400 transition">Qui sommes-nous</a>
+        <a href="{% url 'contact' %}" class="hover:text-blue-400 transition">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="{% url 'devis' %}" class="text-xs bg-blue-600 hover:bg-blue-500 text-white font-semibold px-4 py-2 rounded-lg transition shadow-lg shadow-blue-900/30 flex items-center gap-2">
+          <span>Estimer mon projet</span>
+          <i class="fa-solid fa-arrow-right text-[10px]"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section class="relative overflow-hidden pt-20 pb-16 md:pt-28 md:pb-24 border-b border-slate-900 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(37,99,235,0.15),rgba(255,255,255,0))]">
+    <div class="max-w-4xl mx-auto px-4 text-center space-y-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/30 bg-blue-950/40 text-blue-400 text-xs font-semibold">
+        <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+        <span>Développement web moderne & scripts de productivité</span>
+      </div>
+
+      <h1 class="text-3xl md:text-6xl font-black tracking-tight text-white leading-tight">
+        Propulsez votre activité avec des solutions <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">prêtes à l'emploi</span>
+      </h1>
+
+      <p class="text-sm md:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+        Sites vitrines spécialisés par métier, plateformes interactives et automatisations sur-mesure pour libérer votre temps et capter de nouveaux clients.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-4">
+        <a href="#modeles" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs transition shadow-xl shadow-blue-900/40 flex items-center justify-center gap-2">
+          <i class="fa-solid fa-layer-group"></i>
+          <span>Découvrir nos modèles</span>
+        </a>
+        <a href="#automatisation" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 font-semibold text-xs transition flex items-center justify-center gap-2">
+          <i class="fa-solid fa-bolt text-amber-400"></i>
+          <span>Gains de temps & Automatisation</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION RÉALISATIONS DYNAMIQUES (Depuis l'Admin) -->
+  <section id="realisations" class="max-w-6xl mx-auto px-4 py-20">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+      <div>
+        <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-400 bg-emerald-950/50 border border-emerald-800/40 px-2.5 py-1 rounded">Portfolio en direct</span>
+        <h2 class="text-2xl md:text-3xl font-bold text-white mt-3">Nos dernières réalisations</h2>
+        <p class="text-xs md:text-sm text-slate-400 mt-1">Projets récents ajoutés et gérés depuis l'administration.</p>
+      </div>
+      <a href="{% url 'portfolio' %}" class="text-xs text-blue-400 hover:underline font-medium flex items-center gap-1.5">
+        <span>Voir tout le portfolio</span>
+        <i class="fa-solid fa-chevron-right text-[10px]"></i>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {% for realisation in realisations %}
+      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-blue-500/50 transition duration-300 group">
+        <div class="space-y-4">
+          {% if realisation.image %}
+          <div class="overflow-hidden rounded-xl h-40 border border-slate-800">
+            <img src="{{ realisation.image.url }}" alt="{{ realisation.titre }}" class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500">
+          </div>
+          {% endif %}
+          <div>
+            <span class="text-[10px] font-bold uppercase tracking-wider text-blue-400 bg-blue-950/60 px-2 py-0.5 rounded">{{ realisation.categorie }}</span>
+            <h3 class="text-base font-bold text-white group-hover:text-blue-400 transition mt-2">{{ realisation.titre }}</h3>
+            <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+              {{ realisation.description }}
+            </p>
+          </div>
+        </div>
+        <div class="pt-6 border-t border-slate-800/80 mt-4 flex items-center justify-between text-xs">
+          <span class="text-slate-500">{{ realisation.date_realisation|date:"F Y" }}</span>
+          {% if realisation.lien_site %}
+          <a href="{{ realisation.lien_site }}" target="_blank" class="text-blue-400 hover:underline flex items-center gap-1 font-medium">
+            <span>Visiter</span>
+            <i class="fa-solid fa-external-link text-[10px]"></i>
+          </a>
+          {% endif %}
+        </div>
+      </div>
+      {% empty %}
+      <p class="text-slate-400 text-xs col-span-3 text-center py-8">Aucune réalisation publiée pour le moment.</p>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- SECTION MODÈLES MÉTIERS -->
+  <section id="modeles" class="max-w-6xl mx-auto px-4 py-20 border-t border-slate-900/80">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+      <div>
+        <span class="text-[11px] font-bold uppercase tracking-wider text-blue-400 bg-blue-950/50 border border-blue-800/40 px-2.5 py-1 rounded">Catalogue Clé en main</span>
+        <h2 class="text-2xl md:text-3xl font-bold text-white mt-3">Des architectures prêtes à être déployées</h2>
+        <p class="text-xs md:text-sm text-slate-400 mt-1">Économisez des mois de conception : adaptez un modèle préconçu à votre charte graphique.</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-blue-500/50 transition duration-300 relative group">
+        <div class="absolute -top-3 right-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full shadow">
+          Nouveau
+        </div>
+        <div class="space-y-4">
+          <div class="w-10 h-10 rounded-xl bg-blue-950/80 border border-blue-800/50 flex items-center justify-center text-blue-400">
+            <i class="fa-solid fa-compact-disc text-lg"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-white group-hover:text-blue-400 transition">Événementiel & DJ Booking</h3>
+            <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+              Vitrine artiste avec lecteur audio/mixtapes intégré, calendrier des disponibilités et formulaire de devis qualifié.
+            </p>
+          </div>
+        </div>
+        <div class="pt-6">
+          <a href="{% url 'devis' %}?type=dj" class="block w-full text-center py-2.5 px-4 rounded-xl bg-blue-600/10 hover:bg-blue-600 text-blue-400 hover:text-white font-semibold text-xs border border-blue-500/30 transition">
+            Choisir ce modèle
+          </a>
+        </div>
+      </div>
+
+      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-slate-700 transition duration-300 group">
+        <div class="space-y-4">
+          <div class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-amber-400">
+            <i class="fa-solid fa-hammer text-lg"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-white group-hover:text-amber-400 transition">Artisans & Rénovation BTP</h3>
+            <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+              Mise en avant des chantiers avec modules avant/après, avis certifiés et formulaire de chiffrage.
+            </p>
+          </div>
+        </div>
+        <div class="pt-6">
+          <a href="{% url 'devis' %}?type=artisan" class="block w-full text-center py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs border border-slate-700 transition">
+            Choisir ce modèle
+          </a>
+        </div>
+      </div>
+
+      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-slate-700 transition duration-300 group">
+        <div class="space-y-4">
+          <div class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-rose-400">
+            <i class="fa-solid fa-scissors text-lg"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-white group-hover:text-rose-400 transition">Salons & Commerces de proximité</h3>
+            <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+              Carte des prestations, prise de rendez-vous en ligne, horaires dynamiques et click & collect.
+            </p>
+          </div>
+        </div>
+        <div class="pt-6">
+          <a href="{% url 'devis' %}?type=commerce" class="block w-full text-center py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs border border-slate-700 transition">
+            Choisir ce modèle
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION AUTOMATISATION -->
+  <section id="automatisation" class="border-y border-slate-900 bg-slate-950/60 py-20">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center max-w-2xl mx-auto mb-14 space-y-3">
+        <span class="text-[11px] font-bold uppercase tracking-wider text-amber-400 bg-amber-950/50 border border-amber-800/40 px-2.5 py-1 rounded">Productivité & Rentabilité</span>
+        <h2 class="text-2xl md:text-3xl font-bold text-white">Arrêtez de perdre des heures sur l'administratif</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-6 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-lg bg-pink-950/50 border border-pink-800/40 flex items-center justify-center text-pink-400">
+              <i class="fa-solid fa-share-nodes"></i>
+            </div>
+            <div>
+              <h3 class="text-sm font-bold text-white">Automatisation Réseaux & Créateurs</h3>
+              <p class="text-[11px] text-slate-400">Instagram, TikTok, YouTube, X</p>
+            </div>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Multi-diffusion programmée de vos vidéos et sons, réponses automatiques qualifiées sur vos messages privés.
+          </p>
+        </div>
+
+        <div class="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-6 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-lg bg-emerald-950/50 border border-emerald-800/40 flex items-center justify-center text-emerald-400">
+              <i class="fa-solid fa-gears"></i>
+            </div>
+            <div>
+              <h3 class="text-sm font-bold text-white">Alertes & Devis instantanés</h3>
+              <p class="text-[11px] text-slate-400">Pour artisans, commerces et PME</p>
+            </div>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Dès qu'un client remplit un formulaire : devis PDF créé à la volée et alerte instantanée sur votre smartphone.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-900 bg-slate-950 py-12 mt-auto text-xs text-slate-400">
+    <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+      <div class="space-y-3 md:col-span-2">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-5 bg-blue-600 rounded-sm transform -skew-x-12"></span>
+          <span class="text-base font-black text-white">ledeve<span class="text-blue-500">.</span></span>
+        </div>
+        <p class="text-slate-500 max-w-sm">
+          Solutions web prêtes à l'emploi, développement sur-mesure et automatisation de tâches.
+        </p>
+      </div>
+
+      <div class="space-y-2">
+        <h3 class="font-bold text-white uppercase text-[11px] tracking-wider">Navigation</h3>
+        <ul class="space-y-1.5 text-slate-400">
+          <li><a href="#modeles" class="hover:text-white transition">Modèles métiers</a></li>
+          <li><a href="#realisations" class="hover:text-white transition">Réalisations</a></li>
+          <li><a href="{% url 'devis' %}" class="hover:text-white transition">Devis gratuit</a></li>
+        </ul>
+      </div>
+
+      <div class="space-y-2">
+        <h3 class="font-bold text-white uppercase text-[11px] tracking-wider">Informations</h3>
+        <ul class="space-y-1.5 text-slate-400">
+          <li><a href="{% url 'a_propos' %}" class="hover:text-white transition">Qui sommes-nous</a></li>
+          <li><a href="{% url 'contact' %}" class="hover:text-white transition">Contact</a></li>
+          <li><a href="{% url 'mentions_legales' %}" class="hover:text-white transition">Mentions légales</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-4 pt-6 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-600 text-[11px]">
+      <p>© 2026 ledeve. Tous droits réservés.</p>
+      <p>Conçu pour la performance et l'efficacité.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

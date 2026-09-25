@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demander une estimation — ledeve.</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased font-sans min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white">
+
+  <header class="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="{% url 'home' %}" class="flex items-center gap-2 group focus:outline-none">
+        <span class="w-2.5 h-6 bg-blue-600 rounded-sm transform -skew-x-12"></span>
+        <span class="text-xl font-black tracking-tight text-white group-hover:text-blue-400 transition">ledeve<span class="text-blue-500">.</span></span>
+      </a>
+
+      <a href="{% url 'home' %}" class="text-xs text-slate-400 hover:text-white transition flex items-center gap-1.5">
+        <i class="fa-solid fa-arrow-left text-[10px]"></i>
+        <span>Retour à l'accueil</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="max-w-2xl mx-auto px-4 py-12 w-full">
+    <div class="text-center mb-8 space-y-2">
+      <h1 class="text-2xl md:text-3xl font-black text-white">Parlons de votre <span class="text-blue-400">projet</span></h1>
+      <p class="text-xs text-slate-400">Décrivez votre idée en quelques clics pour obtenir un chiffrage sous 24h.</p>
+    </div>
+
+    <form method="POST" class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-4 shadow-2xl text-xs">
+      {% csrf_token %}
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block font-semibold text-slate-300 mb-1.5">Nom complet ou Entreprise</label>
+          <input type="text" name="nom" required placeholder="ex: Jean Dupont" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3.5 py-2.5 text-white focus:outline-none focus:border-blue-500">
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-300 mb-1.5">Email de contact</label>
+          <input type="email" name="email" required placeholder="contact@domaine.fr" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3.5 py-2.5 text-white focus:outline-none focus:border-blue-500">
+        </div>
+      </div>
+
+      <div>
+        <label class="block font-semibold text-slate-300 mb-1.5">Type de solution souhaitée</label>
+        <select name="type_prestation" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3.5 py-2.5 text-slate-200 focus:outline-none focus:border-blue-500 cursor-pointer">
+          <option value="modele_dj">Modèle Clé en main — Événementiel & DJ Booking</option>
+          <option value="modele_artisan">Modèle Clé en main — Artisan / Rénovation</option>
+          <option value="modele_commerce">Modèle Clé en main — Salon / Commerce de proximité</option>
+          <option value="automatisation">Script d'automatisation (Réseaux sociaux, Alertes, Factures)</option>
+          <option value="sur_mesure">Développement d'application sur-mesure</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block font-semibold text-slate-300 mb-1.5">Description de votre besoin</label>
+        <textarea name="description" rows="4" required placeholder="Expliquez votre activité, vos objectifs et vos besoins particuliers..." class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3.5 py-2.5 text-white focus:outline-none focus:border-blue-500"></textarea>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block font-semibold text-slate-300 mb-1.5">Budget envisagé</label>
+          <select name="budget" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3.5 py-2.5 text-slate-200 focus:outline-none focus:border-blue-500 cursor-pointer">
+            <option value="inf_1000">&lt; 1 000 €</option>
+            <option value="1000_2500" selected>1 000 € - 2 500 €</option>
+            <option value="2500_5000">2 500 € - 5 000 €</option>
+            <option value="sup_5000">&gt; 5 000 €</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-300 mb-1.5">Délai de réalisation</label>
+          <select name="delai" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3.5 py-2.5 text-slate-200 focus:outline-none focus:border-blue-500 cursor-pointer">
+            <option value="urgent">Urgent (&lt; 2 semaines)</option>
+            <option value="1_mois" selected>Dans le mois</option>
+            <option value="flexible">Flexible</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="pt-4">
+        <button type="submit" class="w-full py-3 px-5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold transition shadow-lg shadow-blue-900/40 flex items-center justify-center gap-2">
+          <span>Envoyer ma demande</span>
+          <i class="fa-solid fa-paper-plane text-xs"></i>
+        </button>
+      </div>
+    </form>
+  </main>
+
+  <footer class="border-t border-slate-900 bg-slate-950 py-6 text-center text-xs text-slate-500">
+    <p>© 2026 ledeve. Tous droits réservés.</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — ledeve.</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased font-sans min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white">
+
+  <header class="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="{% url 'home' %}" class="flex items-center gap-2 group">
+        <span class="w-2.5 h-6 bg-blue-600 rounded-sm transform -skew-x-12"></span>
+        <span class="text-xl font-black tracking-tight text-white group-hover:text-blue-400 transition">ledeve<span class="text-blue-500">.</span></span>
+      </a>
+      <a href="{% url 'home' %}" class="text-xs text-slate-400 hover:text-white transition flex items-center gap-1.5">
+        <i class="fa-solid fa-arrow-left text-[10px]"></i>
+        <span>Retour à l'accueil</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="max-w-xl mx-auto px-4 py-16 w-full">
+    <div class="text-center mb-8 space-y-2">
+      <h1 class="text-2xl md:text-3xl font-black text-white">Contactez-<span class="text-blue-400">nous</span></h1>
+      <p class="text-xs text-slate-400">Une question, un partenariat ou un échange technique ? Écrivez-nous directement.</p>
+    </div>
+
+    <form method="POST" class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-4 shadow-2xl text-xs">
+      {% csrf_token %}
+      <div>
+        <label class="block font-semibold text-slate-300 mb-1.5">Votre nom</label>
+        <input type="text" name="nom" required placeholder="ex: Julien Martin" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3.5 py-2.5 text-white focus:outline-none focus:border-blue-500">
+      </div>
+      <div>
+        <label class="block font-semibold text-slate-300 mb-1.5">Adresse email</label>
+        <input type="email" name="email" required placeholder="julien@entreprise.fr" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3.5 py-2.5 text-white focus:outline-none focus:border-blue-500">
+      </div>
+      <div>
+        <label class="block font-semibold text-slate-300 mb-1.5">Objet</label>
+        <input type="text" name="sujet" required placeholder="Question générale / Automatisation" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3.5 py-2.5 text-white focus:outline-none focus:border-blue-500">
+      </div>
+      <div>
+        <label class="block font-semibold text-slate-300 mb-1.5">Message</label>
+        <textarea name="message" rows="4" required placeholder="Votre message..." class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3.5 py-2.5 text-white focus:outline-none focus:border-blue-500"></textarea>
+      </div>
+      <button type="submit" class="w-full py-3 px-5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold transition flex items-center justify-center gap-2">
+        <span>Envoyer le message</span>
+        <i class="fa-solid fa-paper-plane text-xs"></i>
+      </button>
+    </form>
+  </main>
+
+  <footer class="border-t border-slate-900 bg-slate-950 py-6 text-center text-xs text-slate-500">
+    <p>© 2026 ledeve. Tous droits réservés.</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentions Légales — ledeve.</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased font-sans min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white">
+
+  <header class="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="{% url 'home' %}" class="flex items-center gap-2 group">
+        <span class="w-2.5 h-6 bg-blue-600 rounded-sm transform -skew-x-12"></span>
+        <span class="text-xl font-black tracking-tight text-white group-hover:text-blue-400 transition">ledeve<span class="text-blue-500">.</span></span>
+      </a>
+      <a href="{% url 'home' %}" class="text-xs text-slate-400 hover:text-white transition flex items-center gap-1.5">
+        <i class="fa-solid fa-arrow-left text-[10px]"></i>
+        <span>Retour</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-4 py-16 w-full space-y-8 text-xs text-slate-300 leading-relaxed">
+    <div>
+      <h1 class="text-2xl font-bold text-white mb-2">Mentions Légales</h1>
+      <p class="text-slate-500 text-[11px]">Dernière mise à jour : Septembre 2026</p>
+    </div>
+
+    <section class="space-y-2">
+      <h2 class="text-sm font-bold text-white uppercase tracking-wider">1. Éditeur de la plateforme</h2>
+      <p>Le site <strong>ledeve.fr</strong> est édité par la structure <strong>ledeve.</strong>, spécialisée dans l'ingénierie logicielle et les solutions web pour indépendants et entreprises.</p>
+      <p>Contact : <span class="text-blue-400 font-mono">contact@ledeve.fr</span></p>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-sm font-bold text-white uppercase tracking-wider">2. Hébergement</h2>
+      <p>Le site est hébergé sur des infrastructures cloud sécurisées conformes aux normes européennes.</p>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-sm font-bold text-white uppercase tracking-wider">3. Propriété intellectuelle</h2>
+      <p>L'ensemble des éléments graphiques, textes, architectures logicielles et modèles métiers présentés sur le site relèvent de la législation sur le droit d'auteur et la propriété intellectuelle.</p>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-sm font-bold text-white uppercase tracking-wider">4. Protection des données (RGPD)</h2>
+      <p>Les données saisies dans les formulaires d'estimation ou de contact sont exclusivement destinées au traitement commercial des demandes et ne sont en aucun cas revendues ou cédées à des tiers.</p>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-900 bg-slate-950 py-6 text-center text-xs text-slate-500">
+    <p>© 2026 ledeve. Tous droits réservés.</p>
+  </footer>
+
+</body>
+</html>
